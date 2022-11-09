@@ -72,12 +72,17 @@ textQuitReact.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT - 200)
 #</editor-fold>
 
 #<editor-fold desc="Player settings">#
-
-# playerImage = pygame.image.load('assets/entity/ship.png')
-# playerImage = pygame.transform.scale(playerImage, (45, 45))
 PLAYER_HEIGHT = 45
 PLAYER_WIDTH = 45
 playerVelocity = 10
 playerX = (SCREEN_WIDTH / 2) - (PLAYER_WIDTH / 2)
 playerY = SCREEN_HEIGHT - 75
+#</editor-fold>#
+
+#<editor-fold desc="Projectile settings">#
+PROJECTILE_HEIGHT = 50
+PROJECTILE_WIDTH = 50
+projectileVelocity = 20
+projectileX = (SCREEN_WIDTH / 2) - (PLAYER_WIDTH / 2)
+projectileY = SCREEN_HEIGHT - 75
 #</editor-fold>#

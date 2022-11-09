@@ -26,13 +26,15 @@ class Game:
             ##Display player
             self.screen.blit(player.playerImage, (settings.playerX, settings.playerY))
 
+            ##Display projectile
+            player.projectiles.draw(self.screen)
+
             pressed = pygame.key.get_pressed()
             ##Quit the game
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-
             ##Move player
             if pressed[pygame.K_LEFT]:
                 settings.playerX -= settings.playerVelocity
@@ -41,7 +43,10 @@ class Game:
             if pressed[pygame.K_RIGHT]:
                 settings.playerX += settings.playerVelocity
                 if settings.playerX >= (self.screen.get_width() - PLAYER_HEIGHT):
-                    settings.playerX = self.screen.get_width() - PLAYER_HEIGHT
+                    settings.playerX = (self.screen.get_width() - PLAYER_HEIGHT)
+
+            if pressed[pygame.K_SPACE]:
+                player.launchProjectile()
 
             ##Update display
             pygame.display.update()

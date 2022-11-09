@@ -1,14 +1,5 @@
-##Import Game Class
-from Game import *
 ##Import Menu Class
 from Menu import *
-
-# def startTheGame():
-#     ##Check if we are in the right file
-#     if __name__ == '__main__':
-#         ##Then launch the game
-#         game = Game()
-#         game.run()
 
 def mainMenu():
     ##Check if we are in the right file
@@ -17,9 +8,8 @@ def mainMenu():
         menu = Menu()
         menu.run()
 
-
-##Launch Menu
+##Launch Menu at first
 mainMenu()
 
-##Launch Game
+##Launch Game at first 
 # startTheGame()

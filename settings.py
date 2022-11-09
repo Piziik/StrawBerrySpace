@@ -1,8 +1,11 @@
 ##Import pygame and sys library
-import pygame, sys
+import pygame
+import sys
 pygame.init()
 
 #<editor-fold desc="Game Window Settings">
+
+##----GAME WINDOW SETTINGS----##
 
 ##Screen size
 SCREEN_WIDTH = 800
@@ -20,7 +23,7 @@ gameBackgound = pygame.transform.scale(gameBackgound, (SCREEN_WIDTH, SCREEN_HEIG
 ##Variable for the ScrollBackground() method
 position = 0
 
-##Method ScrollBackground() (allows the program to scroll the background so it gives the impression that the character is moving forward)
+##Method ScrollBackground() (allows the program to scroll the background, so it gives the impression that the character is moving forward)
 def ScrollBackground(self):
     global position
     ##Fill the surface w/ a solid color
@@ -31,7 +34,7 @@ def ScrollBackground(self):
     self.screen.blit(gameBackgound, (0, - gameBackgound.get_height() + position))
     ##Decrease or increase the scroll speed
     position += 3
-    ##When the first image disapear, the image is relocated behind the other image to reaper after and so on
+    ##When the first image disappear, the image is relocated behind the other image to reaper after and so on
     if abs(position) > gameBackgound.get_height():
         position = 0
 
@@ -39,19 +42,21 @@ def ScrollBackground(self):
 
 #<editor-fold desc="Menu Window Settings">
 
+##----MENU WINDOW SETTINGS----##
+
 ##Menu background
 menuBackgound = pygame.image.load('assets/img/background-black.png')
 ##Rescale background
 menuBackgound = pygame.transform.scale(menuBackgound, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
-white = (255,255,255)
+white = (255, 255, 255)
 
 ##Create a font object for the Title
 fontTitle = pygame.font.Font('assets/font/SpaceMission.otf', 64)
 ##Create a text
 title = fontTitle.render('StrawBerry Space', True, white, None)
 titleRect = title.get_rect()
-titleRect.center = ( SCREEN_WIDTH // 2, SCREEN_HEIGHT - 700)
+titleRect.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT - 700)
 
 fontTxt = pygame.font.Font('assets/font/8-BIT WONDER.TTF', 16)
 textStart = fontTxt.render('Press ENTER to start', True, white, None)
@@ -68,9 +73,11 @@ textQuitReact.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT - 200)
 
 #<editor-fold desc="Player settings">#
 
-playerImage = pygame.image.load('assets/entity/ship.png')
-playerImage = pygame.transform.scale(playerImage, (45,45))
-playerX = (SCREEN_WIDTH / 2) - 22.5
+# playerImage = pygame.image.load('assets/entity/ship.png')
+# playerImage = pygame.transform.scale(playerImage, (45, 45))
+PLAYER_HEIGHT = 45
+PLAYER_WIDTH = 45
+playerVelocity = 10
+playerX = (SCREEN_WIDTH / 2) - (PLAYER_WIDTH / 2)
 playerY = SCREEN_HEIGHT - 75
-
 #</editor-fold>#

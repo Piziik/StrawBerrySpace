@@ -1,7 +1,4 @@
-##Impport all in settings file
-import pygame
-
-import settings
+##Impport
 from settings import *
 from Game import Game
 
@@ -20,7 +17,7 @@ class Menu:
     def run(self):
         ##The menu loop
         while True:
-            self.screen.blit(menuBackgound, (0,0))
+            self.screen.blit(menuBackgound, (0, 0))
             self.screen.blit(title, titleRect)
             self.screen.blit(textStart, textStartReact)
             self.screen.blit(textQuit, textQuitReact)

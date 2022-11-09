@@ -1,8 +1,7 @@
-##Impport all in settings file
-import pygame
-
+##Import all in settings file
 import settings
 from settings import *
+from Player import Player
 
 ##Game class
 class Game:
@@ -22,8 +21,10 @@ class Game:
             ##Method located in settings.py
             ScrollBackground(self)
 
+            player = Player()
+
             ##Display player
-            self.screen.blit(playerImage, (settings.playerX, settings.playerY))
+            self.screen.blit(player.playerImage, (settings.playerX, settings.playerY))
 
             pressed = pygame.key.get_pressed()
             ##Quit the game
@@ -34,13 +35,13 @@ class Game:
 
             ##Move player
             if pressed[pygame.K_LEFT]:
-                settings.playerX -= 15
+                settings.playerX -= settings.playerVelocity
                 if settings.playerX <= 0:
                     settings.playerX = 0
             if pressed[pygame.K_RIGHT]:
-                settings.playerX += 15
-                if settings.playerX >= (self.screen.get_width() - 45):
-                    settings.playerX = self.screen.get_width() - 45
+                settings.playerX += settings.playerVelocity
+                if settings.playerX >= (self.screen.get_width() - PLAYER_HEIGHT):
+                    settings.playerX = self.screen.get_width() - PLAYER_HEIGHT
 
             ##Update display
             pygame.display.update()

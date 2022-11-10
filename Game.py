@@ -1,4 +1,6 @@
 ##Import all in settings file
+import pygame.time
+
 import settings
 from settings import *
 from Player import Player
@@ -13,6 +15,8 @@ class Game:
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         ##Change the window's caption
         pygame.display.set_caption('StrawBerrySpace - Adventure')
+        self.player = Player(self.screen)
+        self.player.lastShot = 0
 
     ##Run method (keeps the game open)
     def run(self):
@@ -21,13 +25,9 @@ class Game:
             ##Method located in settings.py
             ScrollBackground(self)
 
-            player = Player()
-
-            ##Display player
-            self.screen.blit(player.playerImage, (settings.playerX, settings.playerY))
-
-            ##Display projectile
-            player.projectiles.draw(self.screen)
+            ##Display player & sprites
+            self.player.update(settings)
+            self.player.projectiles.update()
 
             pressed = pygame.key.get_pressed()
             ##Quit the game
@@ -45,8 +45,13 @@ class Game:
                 if settings.playerX >= (self.screen.get_width() - PLAYER_HEIGHT):
                     settings.playerX = (self.screen.get_width() - PLAYER_HEIGHT)
 
-            if pressed[pygame.K_SPACE]:
-                player.launchProjectile()
+            if pressed[pygame.K_SPACE] and self.player.isShooting is not True:
+                self.player.launchProjectile()
+                self.player.lastShot = pygame.time.get_ticks()
+
+            if self.player.lastShot > 0 and pygame.time.get_ticks() - self.player.lastShot > 100:
+                self.player.reload()
+
 
             ##Update display
             pygame.display.update()

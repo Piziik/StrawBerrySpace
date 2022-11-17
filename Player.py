@@ -1,7 +1,6 @@
 from settings import *
 from Projectile import Projectile
 
-
 class Player:
     def __init__(self, screen):
         ##Player image
@@ -16,7 +15,7 @@ class Player:
         ##All players projectiles
         self.projectiles = pygame.sprite.Group()
 
-    ##Update player's projectiles
+    ##Update player on screen
     def update(self, settings):
         self.screen.blit(self.playerImage, (settings.playerX, settings.playerY))
 

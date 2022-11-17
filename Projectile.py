@@ -1,9 +1,7 @@
 import settings
 from settings import *
 
-
 class Projectile(pygame.sprite.Sprite):
-
     def __init__(self, screen):
         super().__init__()
         ##Projectile image

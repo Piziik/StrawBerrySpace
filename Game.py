@@ -4,6 +4,7 @@ import pygame.time
 import settings
 from settings import *
 from Player import Player
+from Enemy import Enemy
 
 ##Game class
 class Game:
@@ -16,6 +17,7 @@ class Game:
         ##Change the window's caption
         pygame.display.set_caption('StrawBerrySpace - Adventure')
         self.player = Player(self.screen)
+        self.enemy = Enemy(self.screen)
         self.player.lastShot = 0
 
     ##Run method (keeps the game open)
@@ -25,9 +27,11 @@ class Game:
             ##Method located in settings.py
             ScrollBackground(self)
 
-            ##Display player & sprites
+            ##Display player, enemy & sprites
             self.player.update(settings)
             self.player.projectiles.update()
+
+            self.enemy.update()
 
             pressed = pygame.key.get_pressed()
             ##Quit the game
@@ -51,6 +55,10 @@ class Game:
 
             if self.player.lastShot > 0 and pygame.time.get_ticks() - self.player.lastShot > 100:
                 self.player.reload()
+
+            if pressed[pygame.K_ESCAPE]:
+                pygame.quit()
+                sys.exit()
 
 
             ##Update display

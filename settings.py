@@ -1,5 +1,6 @@
 ##Import pygame and sys library
 import pygame
+import random
 import sys
 pygame.init()
 
@@ -74,7 +75,7 @@ textQuitReact.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT - 200)
 #<editor-fold desc="Player settings">#
 PLAYER_HEIGHT = 45
 PLAYER_WIDTH = 45
-playerVelocity = 10
+playerVelocity = 8
 playerX = (SCREEN_WIDTH / 2) - (PLAYER_WIDTH / 2)
 playerY = SCREEN_HEIGHT - 75
 #</editor-fold>#
@@ -85,4 +86,12 @@ PROJECTILE_WIDTH = 50
 projectileVelocity = 20
 projectileX = (SCREEN_WIDTH / 2) - (PLAYER_WIDTH / 2)
 projectileY = SCREEN_HEIGHT - 75
+#</editor-fold>#
+
+#<editor-fold desc="Enemy settings">#
+ENEMY_HEIGHT = 60
+ENEMY_WIDTH = 60
+enemyVelocity = 2
+enemyX = random.randint(50, 755)
+enemyY = 0
 #</editor-fold>#

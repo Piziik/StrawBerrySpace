@@ -8,8 +8,5 @@ def mainMenu():
         menu = Menu()
         menu.run()
 
-##Launch Menu at first
+##Launch Menu
 mainMenu()
-
-##Launch Game at first 
-# startTheGame()

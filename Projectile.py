@@ -19,8 +19,15 @@ class Projectile(pygame.sprite.Sprite):
         self.screen.blit(self.projectileImage, (self.rect.x, self.rect.y))
 
     ##Kill projectile if it's not in the screen
-    def update(self):
+    def update(self, enemies):
         self.rect.y -= projectileVelocity
         self.screen.blit(self.projectileImage, (self.rect.x, self.rect.y))
+        print("projo tiré " + str(len(enemies)))
+
+        for enemy in enemies:
+            if enemy.rect.x - ENEMY_WIDTH / 2 <= self.rect.x <= enemy.rect.x + ENEMY_WIDTH / 2 and enemy.rect.y > self.rect.y - PROJECTILE_HEIGHT:
+                enemy.kill()
+                self.kill()
+
         if self.rect.y <= 0:
             self.kill()

@@ -9,8 +9,8 @@ class Enemy(pygame.sprite.Sprite):
         self.enemyImage = pygame.transform.scale(self.enemyImage, (ENEMY_HEIGHT, ENEMY_WIDTH))
         self.rect = self.enemyImage.get_rect()
         ##Enemy coord
-        self.rect.x = settings.enemyX
-        self.rect.y = settings.enemyY - ENEMY_HEIGHT
+        self.rect.x = random.randint(0, 755)
+        self.rect.y = 0 - ENEMY_HEIGHT
         ##Screen Surface
         self.screen = screen
 

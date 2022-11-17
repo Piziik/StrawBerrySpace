@@ -92,6 +92,4 @@ projectileY = SCREEN_HEIGHT - 75
 ENEMY_HEIGHT = 60
 ENEMY_WIDTH = 60
 enemyVelocity = 2
-enemyX = random.randint(50, 755)
-enemyY = 0
 #</editor-fold>#

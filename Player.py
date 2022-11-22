@@ -4,12 +4,16 @@ from Projectile import Projectile
 class Player:
     def __init__(self, screen):
         ##Player image
-        self.playerImage = pygame.image.load('assets/entity/ship.png')
-        self.playerImage = pygame.transform.scale(self.playerImage, (PLAYER_HEIGHT, PLAYER_WIDTH))
+        self.image = pygame.image.load('assets/entity/ship.png')
+        self.image = pygame.transform.scale(self.image, (PLAYER_HEIGHT, PLAYER_WIDTH))
+        self.rect = self.image.get_rect()
         ##Screen Surface
         self.screen = screen
+        ##Player position
+        self.rect.x = (SCREEN_WIDTH / 2) - (PLAYER_WIDTH / 2)
+        self.rect.y = SCREEN_HEIGHT - 75
         ##Projectiles
-        self.limProjectile = 3
+        self.limProjectile = 1
         self.isShooting = False
         self.lastShot = 0
         ##All players projectiles
@@ -17,12 +21,13 @@ class Player:
 
     ##Update player on screen
     def update(self, settings):
-        self.screen.blit(self.playerImage, (settings.playerX, settings.playerY))
+        # self.screen.blit(self.playerImage, (settings.playerX, settings.playerY))
+        self.screen.blit(self.image, (self.rect.x, self.rect.y))
 
     ##Launch projectile
     def launchProjectile(self):
         if len(self.projectiles) < self.limProjectile and self.isShooting is not True:
-            project = Projectile(self.screen)
+            project = Projectile(self, self.screen)
             project.drawProjectile()
             self.projectiles.add(project)
             self.isShooting = True

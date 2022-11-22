@@ -2,15 +2,15 @@ import settings
 from settings import *
 
 class Projectile(pygame.sprite.Sprite):
-    def __init__(self, screen):
+    def __init__(self, player, screen):
         super().__init__()
         ##Projectile image
         self.projectileImage = pygame.image.load('assets/entity/projectile.png')
         self.projectileImage = pygame.transform.scale(self.projectileImage, (PROJECTILE_HEIGHT, PROJECTILE_WIDTH))
         self.rect = self.projectileImage.get_rect()
         ##Projectile coord
-        self.rect.x = settings.playerX
-        self.rect.y = settings.playerY - PLAYER_HEIGHT
+        self.rect.x = player.rect.x
+        self.rect.y = player.rect.y - PLAYER_HEIGHT
         ##Screen Surface
         self.screen = screen
 

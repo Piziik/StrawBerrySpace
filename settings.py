@@ -68,6 +68,11 @@ textQuit = fontTxt.render('( Press ESCAPE to Quit )', True, white, None)
 textQuitReact = textQuit.get_rect()
 textQuitReact.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT - 200)
 
+fontTxt = pygame.font.Font('assets/font/8-BIT WONDER.TTF', 16)
+textEnd = fontTxt.render('Vous êtes mort', True, white, None)
+textEndReact = textStart.get_rect()
+textEndReact.center = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+
 ##Create a font object for
 
 #</editor-fold>

@@ -1,6 +1,6 @@
 import settings
 from settings import *
-from deathWindow import *
+from DeathScreen import *
 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, screen):
@@ -24,4 +24,5 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.y += enemyVelocity
         self.screen.blit(self.image, (self.rect.x, self.rect.y))
         if self.rect.y == settings.SCREEN_HEIGHT:
-            deathWindow.run(self)
+            deathScreen = DeathScreen()
+            deathScreen.run()

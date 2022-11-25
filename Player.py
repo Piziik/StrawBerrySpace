@@ -1,8 +1,11 @@
 from settings import *
 from Projectile import Projectile
+from Game import *
+import Game
 
-class Player:
+class Player(pygame.sprite.Sprite):
     def __init__(self, screen):
+        super(Player, self).__init__()
         ##Player image
         self.image = pygame.image.load('assets/entity/ship.png')
         self.image = pygame.transform.scale(self.image, (PLAYER_HEIGHT, PLAYER_WIDTH))

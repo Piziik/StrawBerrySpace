@@ -36,6 +36,9 @@ class Game:
         self.timer = 2000
         self.monTimerEnregistre = pygame.time.get_ticks()
 
+        white = (255, 255, 255)
+        self.fontTxt = pygame.font.Font('assets/font/SpaceMission.otf', 24)
+
 
     ##Method ScrollBackground() (allows the program to scroll the background, so it gives the impression that the character is moving forward)
     def ScrollBackground(self):
@@ -62,6 +65,12 @@ class Game:
             self.player.update(settings)
             self.player.projectiles.update(self.enemies)
             self.enemies.update()
+
+            ##KillCountDisplay
+            self.textKills = self.fontTxt.render(f'Kills {self.player.killCount}', True, (255, 255, 255), None)
+            self.textKillsReact = self.textKills.get_rect()
+            self.textKillsReact.center = (60, 20)
+            self.screen.blit(self.textKills, self.textKillsReact)
 
             if self.monTimerEnregistre + self.timer < pygame.time.get_ticks():
                 self.monTimerEnregistre = pygame.time.get_ticks()
@@ -98,7 +107,6 @@ class Game:
             if pressed[pygame.K_ESCAPE]:
                 pygame.quit()
                 sys.exit()
-
 
             ##Update display
             pygame.display.update()

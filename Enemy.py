@@ -15,7 +15,7 @@ class Enemy(pygame.sprite.Sprite):
         ##Screen Surface
         self.screen = screen
 
-    ##Update enemy on screen
+    ##Display enemy on screen
     def drawEnemies(self, settings):
         self.screen.blit(self.image, (settings.enemyX, settings.enemyY))
 

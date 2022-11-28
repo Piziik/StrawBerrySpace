@@ -13,6 +13,7 @@ class Projectile(pygame.sprite.Sprite):
         self.rect.y = player.rect.y - PLAYER_HEIGHT
         ##Screen Surface
         self.screen = screen
+        self.player = player
 
     ##Diplay projectiles sprite
     def drawProjectile(self):
@@ -22,11 +23,13 @@ class Projectile(pygame.sprite.Sprite):
     def update(self, enemies):
         self.rect.y -= projectileVelocity
         self.screen.blit(self.projectileImage, (self.rect.x, self.rect.y))
-
         for enemy in enemies:
             if enemy.rect.x - ENEMY_WIDTH / 2 <= self.rect.x <= enemy.rect.x + ENEMY_WIDTH / 2 and enemy.rect.y > self.rect.y - PROJECTILE_HEIGHT:
+                self.player.killCount += 1
+                print(self.player.killCount)
                 enemy.kill()
                 self.kill()
 
         if self.rect.y <= 0:
             self.kill()
+

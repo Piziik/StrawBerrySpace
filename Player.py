@@ -4,6 +4,7 @@ from Game import *
 import Game
 
 class Player(pygame.sprite.Sprite):
+
     def __init__(self, screen):
         super(Player, self).__init__()
         ##Player image
@@ -21,10 +22,10 @@ class Player(pygame.sprite.Sprite):
         self.lastShot = 0
         ##All players projectiles
         self.projectiles = pygame.sprite.Group()
+        self.killCount = 0
 
     ##Update player on screen
     def update(self, settings):
-        # self.screen.blit(self.playerImage, (settings.playerX, settings.playerY))
         self.screen.blit(self.image, (self.rect.x, self.rect.y))
 
     ##Launch projectile
